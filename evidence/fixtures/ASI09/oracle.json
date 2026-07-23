@@ -1,0 +1,5 @@
+{
+  "owasp_id": "ASI09",
+  "oracle_pass": true,
+  "note": "Harnessed human agent trust oracle"
+}

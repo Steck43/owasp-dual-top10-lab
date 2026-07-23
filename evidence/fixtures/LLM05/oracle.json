@@ -1,0 +1,5 @@
+{
+  "owasp_id": "LLM05",
+  "oracle_pass": true,
+  "note": "Harnessed improper output oracle"
+}

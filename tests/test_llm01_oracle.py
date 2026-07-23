@@ -1,8 +1,8 @@
 # Author: Landen Stecker
 # Created: 2026-07-23
 # Updated: 2026-07-23
-# Version: 0.2.0
-# Summary: Oracle tests for Harnessed scenarios + contain + matrix.
+# Version: 0.3.0
+# Summary: Oracle tests for all twenty Harnessed scenarios.
 
 from __future__ import annotations
 
@@ -15,7 +15,8 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-HARNESSED = ["LLM01", "LLM02", "ASI01", "ASI02", "ASI07", "ASI08", "ASI10"]
+HARNESSED = [f"LLM{i:02d}" for i in range(1, 11)] + [f"ASI{i:02d}" for i in range(1, 11)]
+CONTAIN_IDS = {"ASI02", "ASI05"}
 
 
 def _labctl(*args: str, env: dict | None = None) -> subprocess.CompletedProcess[str]:
@@ -35,7 +36,7 @@ def _labctl(*args: str, env: dict | None = None) -> subprocess.CompletedProcess[
 @pytest.mark.parametrize("sid", HARNESSED)
 def test_harnessed_oracle(sid: str, tmp_path: Path) -> None:
     env = {}
-    if sid == "ASI02":
+    if sid in CONTAIN_IDS:
         env["LAB_CONTAIN_ROOT"] = str(tmp_path / "contain")
         (tmp_path / "contain").mkdir()
     r = _labctl("run", sid, env=env)

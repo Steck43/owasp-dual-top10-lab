@@ -1,0 +1,5 @@
+{
+  "owasp_id": "LLM04",
+  "oracle_pass": true,
+  "note": "Harnessed data model poisoning oracle"
+}

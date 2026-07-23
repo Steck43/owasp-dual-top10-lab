@@ -1,0 +1,5 @@
+{
+  "owasp_id": "LLM08",
+  "oracle_pass": true,
+  "note": "Harnessed vector embedding oracle"
+}

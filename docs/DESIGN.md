@@ -18,7 +18,7 @@ Keep both frameworks in one matrix. Every row is always present. CVE and AIID ce
 
 Tool and filesystem scenarios run under a contain profile: synthetic workspace root, egress default-deny, no host credential store.
 
-ASI07, ASI08, and ASI10 need more than a single prompt path. A small multi-agent bus exists so those rows can be harnessed. Harnessed is not Demonstrated.
+ASI07, ASI08, and ASI10 need more than a single prompt path. A small multi-agent bus exists so those rows can be harnessed. All twenty IDs are Harnessed with deterministic oracles. Harnessed is not Demonstrated.
 
 ## Taxonomy pins
 

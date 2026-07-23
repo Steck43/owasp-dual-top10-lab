@@ -1,0 +1,5 @@
+{
+  "owasp_id": "ASI06",
+  "oracle_pass": true,
+  "note": "Harnessed memory context poison oracle"
+}

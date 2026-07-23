@@ -1,0 +1,5 @@
+{
+  "owasp_id": "ASI03",
+  "oracle_pass": true,
+  "note": "Harnessed identity privilege oracle"
+}

@@ -1,0 +1,5 @@
+{
+  "owasp_id": "ASI05",
+  "oracle_pass": true,
+  "note": "Harnessed unexpected code exec oracle"
+}

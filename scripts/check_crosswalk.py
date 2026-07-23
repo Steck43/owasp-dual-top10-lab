@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "docs" / "crosswalk_matrix.tsv"
-HARNESSED = {"LLM01", "LLM02", "ASI01", "ASI02", "ASI07", "ASI08", "ASI10"}
+HARNESSED = {f"LLM{i:02d}" for i in range(1, 11)} | {f"ASI{i:02d}" for i in range(1, 11)}
 
 
 def _cell_ok(row: dict, key: str) -> bool:

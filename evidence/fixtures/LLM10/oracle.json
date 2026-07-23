@@ -1,0 +1,5 @@
+{
+  "owasp_id": "LLM10",
+  "oracle_pass": true,
+  "note": "Harnessed unbounded consumption oracle"
+}
