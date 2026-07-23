@@ -6,7 +6,7 @@
 
 owasp_id: LLM09
 scenario_id: LLM09_misinformation
-status: Harnessed
+status: Reproduced-in-lab
 atlas:
   - AML.T0048
 cves: []

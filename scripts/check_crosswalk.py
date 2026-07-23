@@ -45,8 +45,8 @@ def main() -> int:
             return 1
     for hid in HARNESSED:
         row = next(r for r in rows if r["id"] == hid)
-        if row["status"] != "Harnessed":
-            print(f"{hid} must be Harnessed")
+        if row["status"] not in {"Harnessed", "Reproduced-in-lab", "Demonstrated"}:
+            print(f"{hid} must be Harnessed or higher, got {row['status']}")
             return 1
         if not (row.get("capture") or "").strip():
             print(f"{hid} missing capture path")

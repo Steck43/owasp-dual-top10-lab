@@ -31,14 +31,14 @@ Full promote rules: [docs/claim_tense.md](docs/claim_tense.md).
 | | Count |
 |--|------:|
 | Matrix rows resolved (pin or dated N/A) | 20/20 |
-| Harnessed | 20/20 |
+| Harnessed | 18 |
+| Reproduced-in-lab | 2 (LLM01, LLM09) |
 | Stub | 0 |
-| Reproduced-in-lab | 0 |
 | Demonstrated | 0 |
 
-Every ID has a deterministic oracle. That is Lab-Runnable at Harnessed depth. It is not Demonstrated. Live model captures and external primary evidence are separate climbs on the claim ladder.
+LLM01 and LLM09 have live captures against `gpt-3.5-turbo` (vulnerable path hits the marker; control path does not). Captures stay under gitignored `evidence/captures/`. Gemini and Claude Haiku runs for the same IDs mostly resisted the vulnerable path; those files are kept as live-attempts, not promotions.
 
-ASI07/08/10 use a small multi-agent bus. ASI02/ASI05 require the contain profile. Harnessed-majority is true; Demonstrated remains zero until external pins or live captures earn that word.
+ASI07/08/10 use a small multi-agent bus. ASI02/ASI05 require the contain profile. Demonstrated remains zero until external primary evidence earns that word.
 
 ## Quick start
 
@@ -56,6 +56,10 @@ labctl run LLM01
 labctl run LLM08
 labctl run ASI05
 labctl run ASI09
+
+# Live captures (keys via env only; writes gitignored evidence/captures/)
+# GEMINI_API_KEY / ANTHROPIC_API_KEY / OPENAI_API_KEY
+python scripts/live_capture.py --provider openai --ids LLM01,LLM09
 ```
 
 ## Repository layout
