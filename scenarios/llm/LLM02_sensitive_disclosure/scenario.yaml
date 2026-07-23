@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: LLM02 scenario — sensitive disclosure oracle.
+# Summary: LLM02 scenario: sensitive disclosure oracle.
 
 owasp_id: LLM02
 scenario_id: LLM02_sensitive_disclosure

@@ -1,5 +1,4 @@
-# LLM01 — Prompt Injection (exemplar)
-
+# LLM01: Prompt Injection (exemplar)
 Author: Landen Stecker  
 Created: 2026-07-23  
 Updated: 2026-07-23  

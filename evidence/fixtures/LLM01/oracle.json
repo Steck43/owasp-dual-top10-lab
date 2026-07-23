@@ -1,5 +1,5 @@
 {
   "owasp_id": "LLM01",
   "oracle_pass": true,
-  "note": "Captured via labctl scenario run LLM01 — Harnessed, not Demonstrated"
+  "note": "Captured via labctl scenario run LLM01; Harnessed, not Demonstrated"
 }

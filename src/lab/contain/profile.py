@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: Wave 0 contain profile — egress deny, synthetic root, resource caps.
+# Summary: Wave 0 contain profile: egress deny, synthetic root, resource caps.
 
 from __future__ import annotations
 
@@ -37,14 +37,14 @@ def _resource_cap_check() -> tuple[list[str], list[str]]:
         failures.append("LAB_MAX_RSS_MB out of range 64..8192")
     # Best-effort RLIMIT on POSIX; Windows skips silently
     if _resource is None:
-        checks.append("RLIMIT_CPU unavailable on this host — env caps only")
+        checks.append("RLIMIT_CPU unavailable on this host; env caps only")
     else:
         try:
             soft, hard = _resource.getrlimit(_resource.RLIMIT_CPU)
             _resource.setrlimit(_resource.RLIMIT_CPU, (max_seconds, hard))
             checks.append("RLIMIT_CPU applied")
         except (ValueError, OSError, AttributeError):
-            checks.append("RLIMIT_CPU unavailable on this host — env caps only")
+            checks.append("RLIMIT_CPU unavailable on this host; env caps only")
     return checks, failures
 
 
@@ -63,15 +63,15 @@ def check_contain(profile: str = "default") -> ContainResult:
         else:
             checks.append(f"LAB_CONTAIN_ROOT set ({root})")
     else:
-        checks.append("LAB_CONTAIN_ROOT unset — ok for non-tool scenarios")
+        checks.append("LAB_CONTAIN_ROOT unset; ok for non-tool scenarios")
 
     if os.environ.get("LAB_ALLOW_HOST_CREDS", "").lower() in {"1", "true", "yes"}:
-        failures.append("LAB_ALLOW_HOST_CREDS is set — refuse unsafe runs")
+        failures.append("LAB_ALLOW_HOST_CREDS is set; refuse unsafe runs")
     else:
         checks.append("host creds not explicitly allowed")
 
     if os.environ.get("LAB_ALLOW_EGRESS", "").lower() in {"1", "true", "yes"}:
-        failures.append("LAB_ALLOW_EGRESS is set — default is deny")
+        failures.append("LAB_ALLOW_EGRESS is set; default is deny")
     else:
         checks.append("egress default-deny")
 

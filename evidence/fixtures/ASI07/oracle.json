@@ -1,5 +1,5 @@
 {
   "owasp_id": "ASI07",
   "oracle_pass": true,
-  "note": "Harnessed inter-agent spoof oracle — multi-agent surface present"
+  "note": "Harnessed inter-agent spoof oracle; multi-agent surface present"
 }

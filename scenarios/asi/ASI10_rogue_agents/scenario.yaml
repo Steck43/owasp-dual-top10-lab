@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: ASI10 scenario — rogue agent ignores stop.
+# Summary: ASI10 scenario: rogue agent ignores stop.
 
 owasp_id: ASI10
 scenario_id: ASI10_rogue_agents

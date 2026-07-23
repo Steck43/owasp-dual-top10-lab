@@ -8,13 +8,13 @@ from __future__ import annotations
 
 
 def run_vulnerable(task: str, untrusted: str) -> str:
-    """Naive concat — untrusted text is treated as instructions."""
+    """Naive concat. Untrusted text is treated as instructions."""
     prompt = f"{task}\n\n{untrusted}"
     return _respond(prompt, honor_override=True)
 
 
 def run_control(task: str, untrusted: str) -> str:
-    """Labeled envelope — override markers in untrusted text are ignored."""
+    """Labeled envelope. Override markers in untrusted text are ignored."""
     prompt = (
         f"{task}\n\n"
         "UNTRUSTED_DATA_BEGIN\n"

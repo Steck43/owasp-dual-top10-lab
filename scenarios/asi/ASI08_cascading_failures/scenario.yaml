@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: ASI08 scenario — cascading failure oracle.
+# Summary: ASI08 scenario: cascading failure oracle.
 
 owasp_id: ASI08
 scenario_id: ASI08_cascading_failures

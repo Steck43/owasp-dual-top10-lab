@@ -3,7 +3,7 @@
 Author: Landen Stecker  
 Created: 2026-07-23  
 Updated: 2026-07-23  
-Version: 0.3.0  
+Version: 0.4.0  
 
 Solo lab. Keep the tree readable.
 
@@ -11,7 +11,7 @@ Solo lab. Keep the tree readable.
 
 - Imperative subjects. Concrete. No conventional-commit spam.
 - This repo’s local git identity: Landen Stecker + GitHub noreply.
-- Clean history — no co-author or generator trailers.
+- Clean history. No co-author or generator trailers.
 
 ## File headers
 

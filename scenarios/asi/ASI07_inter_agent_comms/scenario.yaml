@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: ASI07 scenario — spoofed inter-agent message oracle.
+# Summary: ASI07 scenario: spoofed inter-agent message oracle.
 
 owasp_id: ASI07
 scenario_id: ASI07_inter_agent_comms

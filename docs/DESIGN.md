@@ -1,9 +1,9 @@
-# Design — owasp-dual-top10-lab
+# Design: owasp-dual-top10-lab
 
 Author: Landen Stecker  
 Created: 2026-07-23  
 Updated: 2026-07-23  
-Version: 0.2.0  
+Version: 0.3.0  
 
 ## Purpose
 
@@ -16,14 +16,14 @@ Each ID maps to MITRE ATLAS, CVEs when real, AIID incidents, test ideas, and cap
 
 ## Decisions
 
-1. NewWave (`Steck43/newwave-owasp-security-lab`) is a separate prior lab — referenced for coverage ideas only, not vendored here.
+1. NewWave (`Steck43/newwave-owasp-security-lab`) is a separate prior lab, referenced for coverage ideas only, not vendored here.
 2. Vertical exemplar (LLM01) before horizontal fill.
 3. Split gates: Matrix-Resolved / Lab-Runnable / Portfolio-Ready.
 4. Dated N/A allowed for CVE/AIID. No invented IDs.
 5. Containment before any tool/exec scenario.
 6. Own harness cannot promote to Demonstrated without real-target / archived external evidence.
 7. ASI07/08/10 stay at Harnessed until a multi-agent / cascade surface exists (now present under `lab.agent.multiagent`).
-8. Crosswalk SoT is `docs/crosswalk_matrix.tsv` — scenarios hold mechanics only.
+8. Crosswalk SoT is `docs/crosswalk_matrix.tsv`. Scenarios hold mechanics only.
 9. Private remote is a working journal: commit and push as you build. Public visibility stays gated.
 
 ## Runtime shape

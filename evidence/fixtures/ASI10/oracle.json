@@ -1,5 +1,5 @@
 {
   "owasp_id": "ASI10",
   "oracle_pass": true,
-  "note": "Harnessed rogue-agent oracle — multi-agent surface present"
+  "note": "Harnessed rogue-agent oracle; multi-agent surface present"
 }

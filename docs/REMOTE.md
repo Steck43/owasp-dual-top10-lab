@@ -3,13 +3,13 @@
 Author: Landen Stecker  
 Created: 2026-07-23  
 Updated: 2026-07-23  
-Version: 0.2.0  
+Version: 0.3.0  
 
 ## Status
 
 Private repo: https://github.com/Steck43/owasp-dual-top10-lab  
 
-Treat `master` as a working journal — commit and push while building. Do not wait for a finished product. Public visibility stays gated.
+Treat `master` as a working journal. Commit and push while building. Do not wait for a finished product. Public visibility stays gated.
 
 ## Before visibility changes
 

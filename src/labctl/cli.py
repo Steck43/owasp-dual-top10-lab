@@ -2,8 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: CLI — list/run/contain for dual Top-10 lab scenarios.
-
+# Summary: CLI: list/run/contain for dual Top-10 lab scenarios.
 from __future__ import annotations
 
 import argparse

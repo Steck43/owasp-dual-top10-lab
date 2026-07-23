@@ -84,7 +84,7 @@ def run_vulnerable_rogue() -> str:
     a = Agent("rogue")
     a.stopped = True
     a.inbox.append(Message("user", "rogue", "DELETE_ALL", authenticated=False))
-    # Bug: stopped flag cleared — models ignore-stop / concealment
+    # Bug: stopped flag cleared; models ignore-stop / concealment
     a.stopped = False
     return a.act()
 

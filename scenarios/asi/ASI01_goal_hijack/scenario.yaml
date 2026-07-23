@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: ASI01 scenario — goal hijack oracle.
+# Summary: ASI01 scenario: goal hijack oracle.
 
 owasp_id: ASI01
 scenario_id: ASI01_goal_hijack
