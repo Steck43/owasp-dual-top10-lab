@@ -1,16 +1,17 @@
-# Contributing / engineer protocol
+# Contributing
 
 Author: Landen Stecker  
 Created: 2026-07-23  
 Updated: 2026-07-23  
-Version: 0.1.0  
+Version: 0.2.0  
+
+Solo lab. Keep the tree readable.
 
 ## Commits
 
-- Author: Landen Stecker  
-- Email: use GitHub noreply for this repo only (`git config user.email` local)  
-- Subject: imperative, concrete. No `feat:`, no model names, no “enhance”.  
-- Forbidden in message or trailers: `Co-authored-by`, Cursor, Claude, Copilot, “Generated with”, “Signed-off-by: cursor”
+- Imperative subjects. Concrete. No conventional-commit spam, no model names.
+- Local `user.name` / `user.email` for this repo: Landen Stecker + GitHub noreply.
+- No Cosmetics in trailers (`Co-authored-by`, tool brand lines).
 
 ## File headers
 
@@ -28,6 +29,6 @@ Every `.py` file starts with:
 
 Sparse. Operator notes. No tutorial voice.
 
-## Push
+## Remote
 
-No remote until Landen says so. First remote is private.
+Private: `Steck43/owasp-dual-top10-lab`. Push as you build. Public visibility stays gated. See `docs/REMOTE.md` before any visibility change.

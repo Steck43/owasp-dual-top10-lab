@@ -1,8 +1,8 @@
 # owasp-dual-top10-lab
 
-Private research lab. Full OWASP LLM Top 10 (2025) and full OWASP Top 10 for Agentic Applications (2026). Each ID carries ATLAS / CVE / AIID crosswalk plus runnable capture scenarios.
+Private research lab by **Landen Stecker**. Full OWASP LLM Top 10 (2025) and full OWASP Top 10 for Agentic Applications (2026). Each ID carries ATLAS / CVE / AIID crosswalk plus runnable capture scenarios.
 
-NewWave (`Steck43/newwave-owasp-security-lab`) stays separate. Do not copy that tree. Cite it read-only / analog-only.
+NewWave (`Steck43/newwave-owasp-security-lab`) stays separate. Cite it read-only / analog-only — do not copy that tree.
 
 ## Portfolio counts (2026-07-23)
 
@@ -25,7 +25,7 @@ Harnessed-majority is **false** (7/20). Own harness alone cannot become Demonstr
 | Reproduced-in-lab | Live run against this harness |
 | Demonstrated | Reserved for real-target / external archived evidence — own harness alone does not qualify |
 
-See [docs/claim_tense.md](docs/claim_tense.md). Remote create: [docs/REMOTE.md](docs/REMOTE.md).
+See [docs/claim_tense.md](docs/claim_tense.md). Remote notes: [docs/REMOTE.md](docs/REMOTE.md).
 
 ## Quick start
 
@@ -47,10 +47,6 @@ labctl run ASI02
 2. Lab-Runnable — Harnessed IDs have oracles + contain when required  
 3. Portfolio-Ready — counts above; update when statuses change  
 
-## Authorship
-
-Landen Stecker. Agents may edit the working tree. Commits are Landen’s unless he says otherwise. No AI trailers.
-
 ## License note
 
-OWASP framework names/titles: CC BY-SA 4.0 attribution when publishing. This repo is private until Landen opens a remote.
+OWASP framework names/titles: CC BY-SA 4.0 attribution when publishing. Repo is private (`Steck43/owasp-dual-top10-lab`).
