@@ -11,7 +11,7 @@ Solo lab. Keep the tree readable.
 
 - Imperative subjects. Concrete. No conventional-commit spam, no model names.
 - Local `user.name` / `user.email` for this repo: Landen Stecker + GitHub noreply.
-- No Cosmetics in trailers (`Co-authored-by`, tool brand lines).
+- No tool-brand trailers (`Co-authored-by`, “Generated with …”).
 
 ## File headers
 
