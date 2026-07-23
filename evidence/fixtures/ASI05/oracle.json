@@ -1,5 +1,7 @@
 {
   "owasp_id": "ASI05",
   "oracle_pass": true,
-  "note": "Harnessed unexpected code exec oracle"
+  "vulnerable_output": "CODE_EXEC_OK",
+  "control_output": "DENIED_NON_LITERAL",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run ASI05"
 }

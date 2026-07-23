@@ -7,6 +7,11 @@ Private repository: https://github.com/Steck43/owasp-dual-top10-lab
 
 Commit and push while building. Do not wait for a finished product. Public visibility and LinkedIn/domain tagging stay gated until the README claim counts and LICENSE are ready for that audience.
 
+## Authorship and GH ops
+
+- Authorship is Landen Stecker only. No co-author trailers, no tool credits, no process theater in commits, issues, PRs, or docs.
+- Stay private until an explicit visibility gate. Do not open the repo or tag it public as part of routine ops.
+
 ## Before a visibility change
 
 1. `python scripts/check_secrets.py` exits 0
@@ -20,3 +25,4 @@ Commit and push while building. Do not wait for a finished product. Public visib
 - Tool scenarios need `LAB_CONTAIN_ROOT` (disposable directory)
 - `LAB_ALLOW_EGRESS` and `LAB_ALLOW_HOST_CREDS` stay unset unless you are deliberately testing the refuse path
 - Live captures stay under `evidence/captures/` (gitignored)
+- Promoted live receipts live under `evidence/receipts/live/` with `live_promotions.json`

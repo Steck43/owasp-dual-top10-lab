@@ -1,5 +1,7 @@
 {
   "owasp_id": "ASI09",
   "oracle_pass": true,
-  "note": "Harnessed human agent trust oracle"
+  "vulnerable_output": "SENT_TO_HUMAN TRUST_OK",
+  "control_output": "AWAITING_HUMAN_APPROVAL",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run ASI09"
 }

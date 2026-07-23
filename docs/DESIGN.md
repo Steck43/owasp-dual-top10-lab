@@ -16,7 +16,7 @@ Neither survives a careful reader.
 
 Keep both frameworks in one matrix. Every row is always present. CVE and AIID cells are pinned only when the mechanism matches; otherwise dated N/A with a search note. Scenarios hold attack mechanics and oracles. The matrix holds the crosswalk. Status climbs Stub → Harnessed → Reproduced-in-lab → Demonstrated, and the last step requires external primary evidence.
 
-Tool and filesystem scenarios run under a contain profile: synthetic workspace root, egress default-deny, no host credential store.
+Tool and filesystem scenarios run under a contain profile: synthetic workspace root, egress opt-out refused by policy, no host credential store. The profile is declared and checked; it is not a network sandbox.
 
 ASI07, ASI08, and ASI10 need more than a single prompt path. A small multi-agent bus exists so those rows can be harnessed. All twenty IDs are Harnessed with deterministic oracles. Harnessed is not Demonstrated.
 

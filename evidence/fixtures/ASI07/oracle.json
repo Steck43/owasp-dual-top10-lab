@@ -1,5 +1,7 @@
 {
   "owasp_id": "ASI07",
   "oracle_pass": true,
-  "note": "Harnessed inter-agent spoof oracle; multi-agent surface present"
+  "vulnerable_output": "ROGUE_DELETE_OK",
+  "control_output": "DENIED_UNAUTH_MESSAGE",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run ASI07"
 }

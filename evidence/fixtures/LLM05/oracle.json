@@ -1,5 +1,7 @@
 {
   "owasp_id": "LLM05",
   "oracle_pass": true,
-  "note": "Harnessed improper output oracle"
+  "vulnerable_output": "OUTPUT_EXEC_OK",
+  "control_output": "DENIED_UNSAFE_OUTPUT",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run LLM05"
 }

@@ -1,5 +1,7 @@
 {
   "owasp_id": "LLM08",
   "oracle_pass": true,
-  "note": "Harnessed vector embedding oracle"
+  "vulnerable_output": "VECTOR_POISON_OK",
+  "control_output": "vendor note about shipping",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run LLM08"
 }

@@ -71,9 +71,10 @@ def check_contain(profile: str = "default") -> ContainResult:
         checks.append("host creds not explicitly allowed")
 
     if os.environ.get("LAB_ALLOW_EGRESS", "").lower() in {"1", "true", "yes"}:
-        failures.append("LAB_ALLOW_EGRESS is set; default is deny")
+        failures.append("LAB_ALLOW_EGRESS is set; policy default is deny")
     else:
-        checks.append("egress default-deny")
+        # Honesty: this is a declared policy opt-out, not a network sandbox.
+        checks.append("egress opt-out unset (policy-declared; not network-enforced)")
 
     rc, rf = _resource_cap_check()
     checks.extend(rc)

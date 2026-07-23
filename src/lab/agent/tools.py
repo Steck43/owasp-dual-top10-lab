@@ -22,8 +22,9 @@ def ensure_workspace(root: Path) -> Path:
 
 
 def tool_read_file(root: Path, rel: str) -> str:
-    target = (root / rel).resolve()
-    if not str(target).startswith(str(root.resolve())):
+    root_r = root.resolve()
+    target = (root_r / rel).resolve()
+    if not target.is_relative_to(root_r):
         raise PermissionError("path escapes contain root")
     return target.read_text(encoding="utf-8")
 

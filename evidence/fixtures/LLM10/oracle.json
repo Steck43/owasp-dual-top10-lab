@@ -1,5 +1,7 @@
 {
   "owasp_id": "LLM10",
   "oracle_pass": true,
-  "note": "Harnessed unbounded consumption oracle"
+  "vulnerable_output": "CONSUME_OK steps=200",
+  "control_output": "BUDGET_EXCEEDED steps=16",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run LLM10"
 }

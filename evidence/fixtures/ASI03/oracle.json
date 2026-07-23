@@ -1,5 +1,7 @@
 {
   "owasp_id": "ASI03",
   "oracle_pass": true,
-  "note": "Harnessed identity privilege oracle"
+  "vulnerable_output": "PRIVILEGE_OK",
+  "control_output": "DENIED_NO_TOKEN",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run ASI03"
 }

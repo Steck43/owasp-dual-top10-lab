@@ -25,3 +25,5 @@ Thesis rows in this lab: LLM01, ASI01, ASI02, ASI06, LLM06.
 ## Claim tense
 
 Do not collapse the roofs. A passing gate test is not Demonstrated ASI coverage. A Harnessed lab oracle is not proof that capability-gate failed in production.
+
+FALSE-ALLOW in the insufficiency harness means: Stage-1 allowlist grants the tool+path, while the threat ground truth for that case is deny (hostile intent / composition). It is not a bug in the allowlist matcher; it is the insufficiency thesis.

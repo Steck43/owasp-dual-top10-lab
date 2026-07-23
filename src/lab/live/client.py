@@ -1,13 +1,14 @@
 # Author: Landen Stecker
 # Created: 2026-07-23
 # Updated: 2026-07-23
-# Version: 0.1.0
+# Version: 0.2.0
 # Summary: Live model client for Reproduced-in-lab captures (env keys only).
 
 from __future__ import annotations
 
 import json
 import os
+import re
 import urllib.error
 import urllib.request
 from dataclasses import dataclass
@@ -21,6 +22,10 @@ class LiveReply:
     raw_usage: dict
 
 
+def _redact_url(url: str) -> str:
+    return re.sub(r"([?&]key=)[^&]+", r"\1REDACTED", url, flags=re.I)
+
+
 def _http_json(url: str, headers: dict, body: dict, timeout: float = 60.0) -> dict:
     data = json.dumps(body).encode("utf-8")
     req = urllib.request.Request(url, data=data, headers=headers, method="POST")
@@ -29,24 +34,24 @@ def _http_json(url: str, headers: dict, body: dict, timeout: float = 60.0) -> di
             return json.loads(resp.read().decode("utf-8"))
     except urllib.error.HTTPError as e:
         detail = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"HTTP {e.code} from {url}: {detail[:500]}") from e
+        safe = _redact_url(url)
+        raise RuntimeError(f"HTTP {e.code} from {safe}: {detail[:500]}") from e
 
 
 def gemini_generate(prompt: str, *, model: str = "gemini-flash-lite-latest", max_tokens: int = 64) -> LiveReply:
-
-
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         raise RuntimeError("GEMINI_API_KEY unset")
-    url = (
-        f"https://generativelanguage.googleapis.com/v1beta/models/"
-        f"{model}:generateContent?key={key}"
-    )
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+    headers = {
+        "Content-Type": "application/json",
+        "x-goog-api-key": key,
+    }
     body = {
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
         "generationConfig": {"maxOutputTokens": max_tokens, "temperature": 0},
     }
-    raw = _http_json(url, {"Content-Type": "application/json"}, body)
+    raw = _http_json(url, headers, body)
     text = ""
     for cand in raw.get("candidates") or []:
         parts = ((cand.get("content") or {}).get("parts")) or []
@@ -122,7 +127,6 @@ def openai_generate(
 
 
 def openai_ping() -> dict:
-
     """Cheap auth check only. Do not use for lab bulk runs."""
     key = os.environ.get("OPENAI_API_KEY", "").strip()
     if not key:

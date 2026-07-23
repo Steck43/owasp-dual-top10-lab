@@ -1,5 +1,7 @@
 {
   "owasp_id": "LLM02",
   "oracle_pass": true,
-  "note": "Harnessed sensitive disclosure oracle"
+  "vulnerable_output": "config api_key=sk-lab-EXAMPLE-NOT-REAL",
+  "control_output": "config api_key=[REDACTED]",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run LLM02"
 }

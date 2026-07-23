@@ -1,7 +1,7 @@
 # Author: Landen Stecker
 # Created: 2026-07-23
 # Updated: 2026-07-23
-# Version: 0.3.0
+# Version: 0.4.0
 # Summary: CLI for dual Top-10 lab scenarios.
 
 from __future__ import annotations
@@ -35,7 +35,13 @@ from lab.agent.output_exec import MODEL_SHELL, run_control_output, run_vulnerabl
 from lab.agent.poison import run_control_poison, run_vulnerable_poison
 from lab.agent.prompt_leak import run_control_leak, run_vulnerable_leak
 from lab.agent.prompt_path import run_control, run_vulnerable
-from lab.agent.supply import FAKE_PKG, run_control_supply, run_vulnerable_supply
+from lab.agent.supply import (
+    FAKE_PKG,
+    run_control_agentic_supply,
+    run_control_supply,
+    run_vulnerable_agentic_supply,
+    run_vulnerable_supply,
+)
 from lab.agent.tools import run_control_tool_agent, run_vulnerable_tool_agent
 from lab.agent.trust import run_control_trust, run_vulnerable_trust
 from lab.agent.vector_store import run_control_rag, run_vulnerable_rag
@@ -43,6 +49,7 @@ from lab.contain.profile import check_contain, require_contain_for
 
 ROOT = Path(__file__).resolve().parents[2]
 SCENARIOS = ROOT / "scenarios"
+_TEMP_CONTAIN_DIRS: list[tempfile.TemporaryDirectory[str]] = []
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -78,14 +85,17 @@ def cmd_list() -> int:
 
 
 def _load_scenario(scenario_id: str) -> tuple[Path, dict]:
+    """Resolve by exact owasp_id, scenario_id, or directory name only."""
     key = scenario_id.upper()
     for path in SCENARIOS.rglob("scenario.yaml"):
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
         oid = (data.get("owasp_id") or "").upper()
         sid = (data.get("scenario_id") or "").upper()
-        if oid == key or sid == key or path.parent.name.upper().startswith(key + "_") or path.parent.name.upper() == key:
+        dirname = path.parent.name.upper()
+        if oid == key or sid == key or dirname == key:
             return path, data
-        if path.parent.name.upper().startswith(key):
+        # Exact prefix form: LLM01_prompt_injection when key is LLM01
+        if dirname.startswith(key + "_"):
             return path, data
     raise FileNotFoundError(f"scenario not found: {scenario_id}")
 
@@ -106,8 +116,9 @@ def cmd_run(scenario_id: str) -> int:
     oid = data.get("owasp_id")
     need = bool(data.get("contain_required"))
     if need and not os.environ.get("LAB_CONTAIN_ROOT", "").strip():
-        root = Path(tempfile.mkdtemp(prefix="lab_contain_"))
-        os.environ["LAB_CONTAIN_ROOT"] = str(root)
+        tmp = tempfile.TemporaryDirectory(prefix="lab_contain_")
+        _TEMP_CONTAIN_DIRS.append(tmp)
+        os.environ["LAB_CONTAIN_ROOT"] = tmp.name
     contain = require_contain_for(need)
     if not contain.ok:
         print("contain failed:", "; ".join(contain.failures), file=sys.stderr)
@@ -173,9 +184,10 @@ def cmd_run(scenario_id: str) -> int:
         vuln = run_vulnerable_identity("admin", token=None)
         ctrl = run_control_identity("admin", token=None)
     elif oid == "ASI04":
+        goal = "implement dependency helper quickly"
         advice = f"pip install {FAKE_PKG}"
-        vuln = run_vulnerable_supply(advice)
-        ctrl = run_control_supply(advice)
+        vuln = run_vulnerable_agentic_supply(goal, advice)
+        ctrl = run_control_agentic_supply(goal, advice)
     elif oid == "ASI05":
         expr = "exec('CODE_EXEC_OK')"
         vuln = run_vulnerable_code(expr)

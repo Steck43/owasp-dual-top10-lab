@@ -2,11 +2,11 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.2.0
-# Summary: LLM01 scenario: prompt injection with live reproduction.
+# Summary: LLM01 scenario: prompt injection oracle (Harnessed).
 
 owasp_id: LLM01
 scenario_id: LLM01_prompt_injection
-status: Reproduced-in-lab
+status: Harnessed
 atlas:
   - AML.T0051
   - AML.T0051.001

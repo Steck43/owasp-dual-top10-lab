@@ -12,8 +12,9 @@ Author: [Landen Stecker](https://github.com/Steck43)
 - `scenarios/`: one directory per ID (LLM01–LLM10, ASI01–ASI10)
 - `labctl`: list scenarios, check containment, run oracle paths
 - Fixture oracles under `evidence/fixtures/` for every ID (vulnerable path + control path)
+- Machine-gated live promotions via `evidence/receipts/live_promotions.json`
 
-Containment is required before tool or filesystem scenarios run. Lab secrets are synthetic. Host credentials and egress are denied by default.
+Containment is a declared policy profile before tool or filesystem scenarios run (synthetic workspace root; host credentials and egress opt-outs refused). It is not a network sandbox. Lab secrets are synthetic.
 
 ## Claim status
 
@@ -21,10 +22,11 @@ Containment is required before tool or filesystem scenarios run. Lab secrets are
 |--------|---------|
 | Stub | Matrix row and scenario path only |
 | Harnessed | Deterministic fixture: vulnerable path fails open, control closes it |
-| Reproduced-in-lab | Live run against this lab, capture under `evidence/captures/` |
+| Reproduced-in-lab | Live run against this lab, committed receipt + promotion index |
 | Demonstrated | External primary evidence (CVE write-up, AIID with matching mechanism, vendor advisory). Building a toy and breaking it here does not count. |
 
 Full promote rules: [docs/claim_tense.md](docs/claim_tense.md).  
+Process loop: [docs/PROCESS.md](docs/PROCESS.md).  
 Research receipts: [docs/RESULTS-2026-07-23.md](docs/RESULTS-2026-07-23.md).  
 Related Stage-1 gate: [docs/related_capability_gate.md](docs/related_capability_gate.md).
 
@@ -33,14 +35,14 @@ Related Stage-1 gate: [docs/related_capability_gate.md](docs/related_capability_
 | | Count |
 |--|------:|
 | Matrix rows resolved (pin or dated N/A) | 20/20 |
-| Harnessed | 18 |
-| Reproduced-in-lab | 2 (LLM01, LLM09) |
+| Harnessed | 19 |
+| Reproduced-in-lab | 1 (LLM09) |
 | Stub | 0 |
 | Demonstrated | 0 |
 
-LLM01 and LLM09 have live captures against `gpt-3.5-turbo` (vulnerable path hits the marker; control path does not). Captures stay under gitignored `evidence/captures/`. Gemini and Claude Haiku runs for the same IDs mostly resisted the vulnerable path; those files are kept as live-attempts, not promotions.
+LLM09 is machine-gated: committed capture under `evidence/receipts/live/` plus `live_promotions.json` (strict `MISINFO_OK` line scorer against `gpt-3.5-turbo`). LLM01 live openai output only *described* the inject marker; that attempt was demoted to Harnessed. Local gitignored captures under `evidence/captures/` remain for attempts, not promotions.
 
-ASI07/08/10 use a small multi-agent bus. ASI02/ASI05 require the contain profile. Demonstrated remains zero until external primary evidence earns that word.
+ASI07/08/10 use a small multi-agent bus. ASI02/ASI05 require the contain profile. ASI04 shares the LLM03 install mechanism under agent-goal framing. Demonstrated remains zero until external primary evidence earns that word.
 
 ## Quick start
 
@@ -70,11 +72,13 @@ python scripts/live_capture.py --provider openai --ids LLM01,LLM09
 docs/crosswalk_matrix.tsv   # mapping SoT
 docs/sources.md             # taxonomy pins and corpora
 docs/claim_tense.md         # status ladder
+docs/PROCESS.md             # harness → live → promote → demonstrate
 scenarios/llm/              # LLM01–LLM10
 scenarios/asi/              # ASI01–ASI10
 src/lab/                    # reference agent pieces + contain profile
 src/labctl/                 # CLI
 evidence/fixtures/          # oracle captures for Harnessed rows
+evidence/receipts/          # dated prove artifacts + live promotions
 tests/                      # oracle + matrix checks
 ```
 

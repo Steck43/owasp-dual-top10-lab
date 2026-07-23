@@ -1,5 +1,7 @@
 {
   "owasp_id": "LLM06",
   "oracle_pass": true,
-  "note": "Harnessed excessive agency oracle"
+  "vulnerable_output": "AGENCY_DELETE_OK",
+  "control_output": "NEEDS_CONFIRMATION",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run LLM06"
 }

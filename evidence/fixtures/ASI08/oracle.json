@@ -1,5 +1,7 @@
 {
   "owasp_id": "ASI08",
   "oracle_pass": true,
-  "note": "Harnessed cascade oracle; multi-agent surface present"
+  "vulnerable_output": "CASCADE_OK",
+  "control_output": "CIRCUIT_OPEN",
+  "note": "Regenerated via scripts/refresh_fixtures.py from labctl run ASI08"
 }
