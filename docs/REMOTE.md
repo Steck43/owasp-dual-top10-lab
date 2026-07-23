@@ -7,7 +7,8 @@ Version: 0.1.0
 
 ## Status
 
-**No remote.** Local git only. Push / `gh repo create` waits for an explicit Landen gate.
+**Private remote live:** https://github.com/Steck43/owasp-dual-top10-lab  
+Working journal allowed: commit and push to `master` as you build. Do not wait for “finished product.” Public visibility still Landen-gated.
 
 ## Before any private GH create
 
