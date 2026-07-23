@@ -24,7 +24,9 @@ Containment is required before tool or filesystem scenarios run. Lab secrets are
 | Reproduced-in-lab | Live run against this lab, capture under `evidence/captures/` |
 | Demonstrated | External primary evidence (CVE write-up, AIID with matching mechanism, vendor advisory). Building a toy and breaking it here does not count. |
 
-Full promote rules: [docs/claim_tense.md](docs/claim_tense.md).
+Full promote rules: [docs/claim_tense.md](docs/claim_tense.md).  
+Research receipts: [docs/RESULTS-2026-07-23.md](docs/RESULTS-2026-07-23.md).  
+Related Stage-1 gate: [docs/related_capability_gate.md](docs/related_capability_gate.md).
 
 ## Status (2026-07-23)
 
