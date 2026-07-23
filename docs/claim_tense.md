@@ -1,33 +1,36 @@
 # Claim tense
 
 Author: Landen Stecker  
-Created: 2026-07-23  
 Updated: 2026-07-23  
-Version: 0.2.0  
 
-## Ladder (strict)
+Status words are load-bearing. Use them the same way in the README, the matrix, LinkedIn, and papers.
 
-1. **Stub:** matrix row + empty/minimal scenario path. No oracle.
-2. **Harnessed:** deterministic fixture; oracle shows vulnerable path succeeds and control path fails (or equivalent fail→pass).
-3. **Reproduced-in-lab:** live model or live tool path against *this* harness; capture under `evidence/captures/` (gitignored).
-4. **Demonstrated:** real-target or third-party archived evidence (CVE write-up, AIID with mechanism, external product). Not “we built a toy and broke it.”
+## Ladder
 
-## Promote checklist (Harnessed → Reproduced-in-lab)
+**Stub.** Matrix row exists. Scenario directory may be empty of oracle logic.
 
-- [ ] Contain profile passed for this run
-- [ ] Attack steps recorded
-- [ ] Oracle flipped as expected
-- [ ] Capture artifact hashed / path noted in matrix
-- [ ] Negative control noted
+**Harnessed.** A fixture proves the vulnerability class in-lab: vulnerable path produces the bad marker; control path does not. Deterministic. No live model required.
 
-## Promote checklist (→ Demonstrated)
+**Reproduced-in-lab.** Same class exercised live against this lab (model or tool path), with a capture under `evidence/captures/`.
 
-- [ ] External primary source pinned (CVE / AIID cite / vendor advisory)
-- [ ] Mechanism matches this OWASP ID (not adjacent stretch)
-- [ ] Lab row may cite as related reproduction. Do not replace the external pin.
+**Demonstrated.** External primary evidence with a matching mechanism: CVE advisory, AIID report, vendor write-up. A harness you wrote is not Demonstrated by itself.
 
-## Portfolio language ban list
+## Before promoting Harnessed → Reproduced-in-lab
 
-- “ASI Demonstrated N/10” from harness-only rows
-- “Full Top 10 demonstrated” when status is mostly Harnessed/Stub
-- Collapsing LLM and ASI into one coverage count without naming both frameworks
+- Contain profile passed for the run
+- Attack steps recorded
+- Oracle behavior matched expectations
+- Capture path noted in the matrix
+- Negative control noted
+
+## Before promoting → Demonstrated
+
+- External primary source pinned
+- Mechanism matches this OWASP ID (not an adjacent stretch)
+- Lab row may cite a related reproduction; it does not replace the external pin
+
+## Do not say
+
+- "ASI Demonstrated N/10" from harness-only rows
+- "Full Top 10 demonstrated" while most rows are Stub or Harnessed
+- One coverage count that collapses LLM and ASI without naming both frameworks

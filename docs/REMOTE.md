@@ -1,26 +1,22 @@
-# Remote
+# Remote and release notes
 
 Author: Landen Stecker  
-Created: 2026-07-23  
 Updated: 2026-07-23  
-Version: 0.3.0  
 
-## Status
+Private repository: https://github.com/Steck43/owasp-dual-top10-lab  
 
-Private repo: https://github.com/Steck43/owasp-dual-top10-lab  
+Commit and push while building. Do not wait for a finished product. Public visibility and LinkedIn/domain tagging stay gated until the README claim counts and LICENSE are ready for that audience.
 
-Treat `master` as a working journal. Commit and push while building. Do not wait for a finished product. Public visibility stays gated.
+## Before a visibility change
 
-## Before visibility changes
+1. `python scripts/check_secrets.py` exits 0
+2. No host `.env`, API keys, or real tokens under `evidence/` or scenarios
+3. NewWave source is not vendored into this tree
+4. README status table matches the matrix
 
-1. `python scripts/check_secrets.py` exits 0.
-2. No host `.env`, API keys, or real tokens under `evidence/` or scenarios.
-3. No NewWave source tree vendored into this repo.
-4. Visibility remains **private** unless explicitly flipped later.
+## Lab hygiene
 
-## Payload / secrets hygiene
-
-- Lab secrets are synthetic markers (`sk-lab-EXAMPLE-NOT-REAL`, `LAB_SECRET_DO_NOT_EXFIL`).
-- Tool scenarios require `LAB_CONTAIN_ROOT` (disposable dir); never read host credential stores.
-- Default: `LAB_ALLOW_EGRESS` unset (deny). `LAB_ALLOW_HOST_CREDS` unset (refuse).
-- Captures under `evidence/captures/` stay gitignored.
+- Synthetic markers only (`sk-lab-EXAMPLE-NOT-REAL`, `LAB_SECRET_DO_NOT_EXFIL`)
+- Tool scenarios need `LAB_CONTAIN_ROOT` (disposable directory)
+- `LAB_ALLOW_EGRESS` and `LAB_ALLOW_HOST_CREDS` stay unset unless you are deliberately testing the refuse path
+- Live captures stay under `evidence/captures/` (gitignored)

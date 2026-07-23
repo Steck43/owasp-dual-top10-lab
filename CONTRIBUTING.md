@@ -1,34 +1,28 @@
 # Contributing
 
 Author: Landen Stecker  
-Created: 2026-07-23  
-Updated: 2026-07-23  
-Version: 0.4.0  
 
-Solo lab. Keep the tree readable.
+This is a research lab, not a product. Useful contributions:
 
-## Commits
+- dated N/A search notes with a corpus name and date
+- ATLAS / CVE / AIID pins with a source URL or local corpus path
+- scenario oracles that flip fail→pass on a clear marker
+- contain-profile fixes that fail closed on egress or host credentials
 
-- Imperative subjects. Concrete. No conventional-commit spam.
-- This repo’s local git identity: Landen Stecker + GitHub noreply.
-- Clean history. No co-author or generator trailers.
+## Style
 
-## File headers
+- Imperative commit subjects. Concrete. No conventional-commit prefix theater.
+- Python files carry a short header: Author, Created, Updated, Version, Summary.
+- Comments are operator notes, not tutorials.
+- Do not invent CVE or AIID IDs. Prefer a dated N/A.
 
-Every `.py` file starts with:
+## Checks
 
+```bash
+python scripts/check_crosswalk.py
+python scripts/check_headers.py
+python scripts/check_secrets.py
+pytest -q
 ```
-# Author: Landen Stecker
-# Created: YYYY-MM-DD
-# Updated: YYYY-MM-DD
-# Version: 0.x.y
-# Summary: one plain sentence.
-```
 
-## Comments
-
-Sparse. Operator notes. No tutorial voice.
-
-## Remote
-
-Private: `Steck43/owasp-dual-top10-lab`. Push as you build. See `docs/REMOTE.md` before any visibility change.
+Open an issue before large matrix redesigns. The TSV column set is intentional.
