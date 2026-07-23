@@ -2,7 +2,7 @@
 
 Private research lab by **Landen Stecker**. Full OWASP LLM Top 10 (2025) and full OWASP Top 10 for Agentic Applications (2026). Each ID carries ATLAS / CVE / AIID crosswalk plus runnable capture scenarios.
 
-NewWave (`Steck43/newwave-owasp-security-lab`) stays separate. Cite it read-only / analog-only — do not copy that tree.
+Related prior work: [`Steck43/newwave-owasp-security-lab`](https://github.com/Steck43/newwave-owasp-security-lab) (separate repo; this lab is not a fork or continuation of that tree).
 
 ## Portfolio counts (2026-07-23)
 

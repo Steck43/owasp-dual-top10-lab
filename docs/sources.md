@@ -35,4 +35,4 @@ Version: 0.2.0
 |------|-----|
 | `C:\Users\lande\Engineering_and_Development\aiid-snapshot-20260713` | AIID offline search |
 | Vault Security teardowns / Standards-Baseline-Map | Incident ↔ framework joins |
-| NewWave `Projects/csen296/docs/owasp_coverage.md` | Ideas only — do not copy code |
+| NewWave `Projects/csen296/docs/owasp_coverage.md` | Prior coverage notes (ideas reference) |

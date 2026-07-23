@@ -15,7 +15,7 @@ Treat `master` as a working journal — commit and push while building. Do not w
 
 1. `python scripts/check_secrets.py` exits 0.
 2. No host `.env`, API keys, or real tokens under `evidence/` or scenarios.
-3. NewWave paths are cite-only (not vendored).
+3. No NewWave source tree vendored into this repo.
 4. Visibility remains **private** unless explicitly flipped later.
 
 ## Payload / secrets hygiene
