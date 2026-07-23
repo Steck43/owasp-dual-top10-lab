@@ -3,7 +3,7 @@
 Author: Landen Stecker  
 Created: 2026-07-23  
 Updated: 2026-07-23  
-Version: 0.1.0  
+Version: 0.2.0  
 
 ## Purpose
 
@@ -12,23 +12,23 @@ One private roof for:
 - all 10 OWASP LLM Top 10 (2025)
 - all 10 OWASP Top 10 for Agentic Applications (2026)
 
-Each ID maps to MITRE ATLAS, CVEs when real, AIID incidents, test ideas, and capture scenarios. Matrix drives the lab.
+Each ID maps to MITRE ATLAS, CVEs when real, AIID incidents, test ideas, and capture scenarios. The matrix drives the lab.
 
-## Locked decisions (post-interrogate stamp 2026-07-23)
+## Decisions
 
-1. NewWave frozen. Analog cite only.
+1. NewWave is frozen. Cite analog-only; do not copy that tree.
 2. Vertical exemplar (LLM01) before horizontal fill.
 3. Split gates: Matrix-Resolved / Lab-Runnable / Portfolio-Ready.
 4. Dated N/A allowed for CVE/AIID. No invented IDs.
-5. Containment Wave 0 before tool/exec scenarios.
-6. Own harness cannot promote to Demonstrated without real-target evidence.
-7. ASI07/08/10 Harnessed-max until multi-agent surface exists.
-8. Linear optional (one Work issue). Matrix TSV is SoT.
-9. Landen commits. Push gated.
+5. Containment before any tool/exec scenario.
+6. Own harness cannot promote to Demonstrated without real-target / archived external evidence.
+7. ASI07/08/10 stay at Harnessed until a multi-agent / cascade surface exists (now present under `lab.agent.multiagent`).
+8. Crosswalk SoT is `docs/crosswalk_matrix.tsv` — scenarios hold mechanics only.
+9. Private remote is a working journal: commit and push as you build. Public visibility stays gated.
 
 ## Runtime shape
 
-Vulnerable reference agent + `labctl` + fixture oracles. FastAPI optional later. Contain profile required for unsafe tools.
+Vulnerable reference agent + `labctl` + fixture oracles. Contain profile required for unsafe tools.
 
 ## Taxonomy pins
 
