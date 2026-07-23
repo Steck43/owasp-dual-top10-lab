@@ -1,0 +1,5 @@
+{
+  "owasp_id": "LLM02",
+  "oracle_pass": true,
+  "note": "Harnessed sensitive disclosure oracle"
+}

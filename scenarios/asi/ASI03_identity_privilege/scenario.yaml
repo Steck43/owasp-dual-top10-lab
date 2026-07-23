@@ -1,0 +1,14 @@
+# Author: Landen Stecker
+# Created: 2026-07-23
+# Updated: 2026-07-23
+# Version: 0.1.0
+# Summary: Stub scenario for ASI03.
+
+owasp_id: ASI03
+scenario_id: ASI03_identity_privilege
+status: Stub
+atlas: []
+cves: []
+aiid: []
+asi_mechanism_present: false
+contain_required: false

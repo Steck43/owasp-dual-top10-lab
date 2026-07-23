@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68,<81"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "owasp-dual-top10-lab"
+version = "0.1.0"
+description = "Private OWASP LLM + Agentic Top 10 research lab"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+authors = [{ name = "Landen Stecker" }]
+dependencies = [
+  "pyyaml>=6.0.1,<7",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0,<9",
+]
+
+[project.scripts]
+labctl = "labctl.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

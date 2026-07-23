@@ -1,0 +1,14 @@
+# Author: Landen Stecker
+# Created: 2026-07-23
+# Updated: 2026-07-23
+# Version: 0.1.0
+# Summary: Stub scenario for LLM08.
+
+owasp_id: LLM08
+scenario_id: LLM08_vector_embedding
+status: Stub
+atlas: []
+cves: []
+aiid: []
+asi_mechanism_present: false
+contain_required: false

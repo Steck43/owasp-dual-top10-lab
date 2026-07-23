@@ -1,0 +1,14 @@
+# Author: Landen Stecker
+# Created: 2026-07-23
+# Updated: 2026-07-23
+# Version: 0.1.0
+# Summary: Stub scenario for LLM03.
+
+owasp_id: LLM03
+scenario_id: LLM03_supply_chain
+status: Stub
+atlas: []
+cves: []
+aiid: []
+asi_mechanism_present: false
+contain_required: false

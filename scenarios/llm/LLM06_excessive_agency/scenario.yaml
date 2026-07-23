@@ -1,0 +1,14 @@
+# Author: Landen Stecker
+# Created: 2026-07-23
+# Updated: 2026-07-23
+# Version: 0.1.0
+# Summary: Stub scenario for LLM06.
+
+owasp_id: LLM06
+scenario_id: LLM06_excessive_agency
+status: Stub
+atlas: []
+cves: []
+aiid: []
+asi_mechanism_present: false
+contain_required: false

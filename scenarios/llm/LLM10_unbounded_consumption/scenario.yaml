@@ -1,0 +1,14 @@
+# Author: Landen Stecker
+# Created: 2026-07-23
+# Updated: 2026-07-23
+# Version: 0.1.0
+# Summary: Stub scenario for LLM10.
+
+owasp_id: LLM10
+scenario_id: LLM10_unbounded_consumption
+status: Stub
+atlas: []
+cves: []
+aiid: []
+asi_mechanism_present: false
+contain_required: false
