@@ -1,3 +1,9 @@
+# Author: Landen Stecker
+# Created: 2026-08-19
+# Updated: 2026-08-19
+# Version: 0.1.0
+# Summary: Rewrite dual-lab matrix with 2026 columns.
+
 """Rewrite dual-lab matrix with 2026 columns. Author: Landen Stecker. Date: 2026-08-19."""
 
 from __future__ import annotations

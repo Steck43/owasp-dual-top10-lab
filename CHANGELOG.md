@@ -17,4 +17,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- 
+- Header checker skips `.floor` / `.githooks`; live capture JSON stays byte-stable under the floor line-ending contract.
+
+ 

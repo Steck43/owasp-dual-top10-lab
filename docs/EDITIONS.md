@@ -67,7 +67,7 @@ vote at 75%, incident corpus at 25%.
 ### Scope boundary, stated by OWASP itself
 
 The 2026 LLM list covers **the model as a component inside an application**. When the
-model becomes an **actor** — calling tools, setting downstream consequences in motion —
+model becomes an **actor**, calling tools and setting downstream consequences in motion,
 the risk moves to the Agentic Top 10.
 
 That boundary is why this lab maps both lists in one matrix rather than treating them as
@@ -125,7 +125,7 @@ taxonomy column. That is the precise failure the claim-tense ladder in
 
 ### Consequence for fixture-backed versus capture-backed claims
 
-**Fixture-backed claims survive a taxonomy move.** A fixture oracle tests a *mechanism* —
+**Fixture-backed claims survive a taxonomy move.** A fixture oracle tests a *mechanism*:
 a vulnerable path that fails open and a control path that closes it. Goal hijack is goal
 hijack whether it is filed under LLM04 or LLM05. This lab's twenty rungs are fixture
 oracles, so the 2026 migration costs a column edit and no rung loss.
@@ -164,6 +164,6 @@ category held.
 
 - Confirm the ten-row table against the primary OWASP 2026 release. The 403 stands.
 - Resolve the incident-corpus figure, or keep it out.
-- Diff the Agentic Top 10 (2025-12-09) titles against the matrix — ASI06 already carries
+- Diff the Agentic Top 10 (2025-12-09) titles against the matrix. ASI06 already carries
   `title Memory & Context Poisoning; PDF verbatim pending`, which is this same version
   question surfacing as a note instead of a field.

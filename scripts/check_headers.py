@@ -22,7 +22,7 @@ HEADER_MARKERS = ("Author:", "Created:", "Version:", "Summary:")
 def main() -> int:
     bad = []
     for path in ROOT.rglob("*.py"):
-        if ".venv" in path.parts:
+        if any(part in {".venv", ".floor", ".githooks", ".github"} for part in path.parts):
             continue
         if path.name == "check_headers.py":
             continue
