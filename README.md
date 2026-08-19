@@ -1,8 +1,8 @@
 # owasp-dual-top10-lab
 
-Crosswalk and runnable lab for the **OWASP Top 10 for LLM Applications (2025)** and the **OWASP Top 10 for Agentic Applications (2026)**.
+Crosswalk and runnable lab for the **OWASP Top 10 for LLM Applications (2025)** directory slugs, with **2026 edition as columns**, plus the **OWASP Top 10 for Agentic Applications for 2026** (dated **2025-12-09**). That Agentic list is not *State of Agentic AI Security and Governance* v2.01.
 
-Most coverage work stops at a title list. This repo keeps all twenty IDs in one matrix, maps each row to MITRE ATLAS, CVE, and AIID when a pin is real, and refuses invented IDs. Where nothing clean exists, the cell is a dated N/A with a search note. Scenarios sit next to the matrix so a claim can be exercised, not only asserted.
+Existing crosswalks classify. [Agent State Attack](https://github.com/Agent-State-Attack/agent-state-attack) already maps LLM × Agentic × ATLAS v2026.06 as a title matrix. This lab **pins** (CVE / AIID, or a dated N/A) and **executes** (fixture oracles). Classification is prior art; pin-and-execute is the differentiator.
 
 Author: [Landen Stecker](https://github.com/Steck43)
 
@@ -88,4 +88,4 @@ tests/                      # oracle + matrix checks
 
 ## License and attribution
 
-OWASP Top 10 titles and structure are used under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Code in this repository is authored by Landen Stecker; see LICENSE when published.
+OWASP Top 10 titles and structure are used under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Code in this repository is authored by Landen Stecker; see [LICENSE](LICENSE). OWASP titles remain CC BY-SA 4.0.

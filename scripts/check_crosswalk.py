@@ -17,6 +17,25 @@ MATRIX = ROOT / "docs" / "crosswalk_matrix.tsv"
 PROMOTIONS = ROOT / "evidence" / "receipts" / "live_promotions.json"
 HARNESSED = {f"LLM{i:02d}" for i in range(1, 11)} | {f"ASI{i:02d}" for i in range(1, 11)}
 ALLOWED_STATUS = {"Harnessed", "Reproduced-in-lab", "Demonstrated"}
+REQUIRED_COLUMNS = {
+    "id",
+    "id_2025",
+    "id_2026",
+    "scope_delta",
+    "regrade_required",
+    "owasp_llm_document",
+    "owasp_agentic_document",
+    "atlas_version",
+    "owasp_title",
+    "atlas",
+    "cves",
+    "aiid",
+    "capture",
+    "status",
+    "searched_note",
+}
+
+FORBIDDEN_AGENTIC = ("Agentic Top 10 v2.01",)
 
 
 def _cell_ok(row: dict, key: str) -> bool:
@@ -75,6 +94,13 @@ def _check_reproduced(row: dict, promotions: dict) -> str | None:
 
 def main() -> int:
     rows = list(csv.DictReader(MATRIX.open(encoding="utf-8"), delimiter="\t"))
+    if not rows:
+        print("empty matrix")
+        return 1
+    missing_cols = REQUIRED_COLUMNS - set(rows[0].keys())
+    if missing_cols:
+        print("missing columns", sorted(missing_cols))
+        return 1
     if len(rows) != 20:
         print(f"expected 20 rows, got {len(rows)}")
         return 1
@@ -93,6 +119,18 @@ def main() -> int:
                 return 1
         if not (r.get("searched_note") or "").strip():
             print(f"{r['id']}: missing searched_note")
+            return 1
+
+        if "v2.01" in (r.get("owasp_agentic_document") or "") and "State" not in (
+            r.get("owasp_agentic_document") or ""
+        ):
+            print(f"{r['id']}: owasp_agentic_document must not call the Top 10 v2.01")
+            return 1
+        if (r.get("atlas_version") or "").strip() != "v2026.06":
+            print(f"{r['id']}: atlas_version must be v2026.06")
+            return 1
+        if not (r.get("id_2025") or "").strip() or not (r.get("id_2026") or "").strip():
+            print(f"{r['id']}: id_2025 and id_2026 required")
             return 1
 
         status = (r.get("status") or "").strip()
