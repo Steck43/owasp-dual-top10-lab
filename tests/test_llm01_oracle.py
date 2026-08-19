@@ -15,7 +15,9 @@ from pathlib import Path
 import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
-HARNESSED = [f"LLM{i:02d}" for i in range(1, 11)] + [f"ASI{i:02d}" for i in range(1, 11)]
+HARNESSED = [f"LLM{i:02d}" for i in range(1, 11)] + [
+    f"ASI{i:02d}" for i in range(1, 11)
+]
 CONTAIN_IDS = {"ASI02", "ASI05"}
 
 

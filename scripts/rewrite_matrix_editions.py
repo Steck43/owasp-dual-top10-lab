@@ -1,4 +1,5 @@
 """Rewrite dual-lab matrix with 2026 columns. Author: Landen Stecker. Date: 2026-08-19."""
+
 from __future__ import annotations
 
 import csv
@@ -81,7 +82,9 @@ def main() -> int:
         out_rows.append(nr)
 
     with MATRIX.open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=NEW_FIELDS, delimiter="\t", extrasaction="ignore")
+        w = csv.DictWriter(
+            fh, fieldnames=NEW_FIELDS, delimiter="\t", extrasaction="ignore"
+        )
         w.writeheader()
         w.writerows(out_rows)
     print(f"wrote {len(out_rows)} rows to {MATRIX}")

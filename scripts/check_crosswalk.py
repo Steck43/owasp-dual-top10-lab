@@ -9,13 +9,14 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "docs" / "crosswalk_matrix.tsv"
 PROMOTIONS = ROOT / "evidence" / "receipts" / "live_promotions.json"
-HARNESSED = {f"LLM{i:02d}" for i in range(1, 11)} | {f"ASI{i:02d}" for i in range(1, 11)}
+HARNESSED = {f"LLM{i:02d}" for i in range(1, 11)} | {
+    f"ASI{i:02d}" for i in range(1, 11)
+}
 ALLOWED_STATUS = {"Harnessed", "Reproduced-in-lab", "Demonstrated"}
 REQUIRED_COLUMNS = {
     "id",
@@ -74,7 +75,10 @@ def _check_reproduced(row: dict, promotions: dict) -> str | None:
             f"evidence/receipts/live_promotions.json (machine-gated)"
         )
     digest = _sha256(path)
-    matched = any(e.get("sha256") == digest and e.get("capture") == cap.replace("\\", "/") for e in entries)
+    matched = any(
+        e.get("sha256") == digest and e.get("capture") == cap.replace("\\", "/")
+        for e in entries
+    )
     # Allow capture path variants if sha matches
     if not matched:
         matched = any(e.get("sha256") == digest for e in entries)

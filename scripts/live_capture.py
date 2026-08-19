@@ -15,7 +15,12 @@ from pathlib import Path
 from lab.agent.misinfo import FALSE_CITE, run_control_misinfo, run_vulnerable_misinfo
 from lab.agent.prompt_leak import SYSTEM_PROMPT, run_control_leak, run_vulnerable_leak
 from lab.agent.prompt_path import run_control, run_vulnerable
-from lab.live.client import anthropic_generate, gemini_generate, openai_generate, openai_ping
+from lab.live.client import (
+    anthropic_generate,
+    gemini_generate,
+    openai_generate,
+    openai_ping,
+)
 from lab.live.scoring import inject_ok_hit, misinfo_ok_hit, system_secret_hit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -124,7 +129,9 @@ def capture_llm09(provider: str) -> Path:
     live_vuln = _gen(provider, vuln_prompt)
     live_ctrl = _gen(provider, ctrl_prompt)
     hit = misinfo_ok_hit(live_vuln.text)
-    clean = "NO_GROUNDED_SOURCE" in live_ctrl.text and not misinfo_ok_hit(live_ctrl.text)
+    clean = "NO_GROUNDED_SOURCE" in live_ctrl.text and not misinfo_ok_hit(
+        live_ctrl.text
+    )
     payload = {
         "owasp_id": "LLM09",
         "status_claim": "Reproduced-in-lab" if (hit and clean) else "live-attempt",
@@ -146,9 +153,15 @@ def capture_llm09(provider: str) -> Path:
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(description="Live captures for Reproduced-in-lab")
-    p.add_argument("--provider", choices=["gemini", "anthropic", "openai"], default="gemini")
+    p.add_argument(
+        "--provider", choices=["gemini", "anthropic", "openai"], default="gemini"
+    )
     p.add_argument("--ids", default="LLM01,LLM07,LLM09", help="Comma list")
-    p.add_argument("--ping-openai", action="store_true", help="Auth-only OpenAI ping (no lab spend)")
+    p.add_argument(
+        "--ping-openai",
+        action="store_true",
+        help="Auth-only OpenAI ping (no lab spend)",
+    )
     args = p.parse_args(argv)
 
     if args.ping_openai:

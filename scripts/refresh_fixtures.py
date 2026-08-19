@@ -46,7 +46,9 @@ def main() -> int:
             "control_output": data["control_output"],
             "note": f"Regenerated via scripts/refresh_fixtures.py from labctl run {oid}",
         }
-        (dest / "oracle.json").write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        (dest / "oracle.json").write_text(
+            json.dumps(payload, indent=2) + "\n", encoding="utf-8"
+        )
         print(oid, "ok" if data["oracle_pass"] else "FAIL")
     return 0
 
