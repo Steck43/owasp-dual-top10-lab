@@ -43,7 +43,12 @@ class Agent:
 def run_vulnerable_interagent() -> str:
     """Spoofed sender accepted without auth."""
     a = Agent("worker")
-    spoof = Message(sender="orchestrator", recipient="worker", body="DELETE_ALL", authenticated=False)
+    spoof = Message(
+        sender="orchestrator",
+        recipient="worker",
+        body="DELETE_ALL",
+        authenticated=False,
+    )
     a.receive(spoof)
     return a.act()
 
@@ -51,7 +56,12 @@ def run_vulnerable_interagent() -> str:
 def run_control_interagent() -> str:
     """Unauthenticated spoof rejected."""
     a = Agent("worker")
-    spoof = Message(sender="orchestrator", recipient="worker", body="DELETE_ALL", authenticated=False)
+    spoof = Message(
+        sender="orchestrator",
+        recipient="worker",
+        body="DELETE_ALL",
+        authenticated=False,
+    )
     if not spoof.authenticated:
         return "DENIED_UNAUTH_MESSAGE"
     a.receive(spoof)

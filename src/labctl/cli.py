@@ -19,7 +19,12 @@ from lab.agent.agency import run_control_agency, run_vulnerable_agency
 from lab.agent.code_exec import run_control_code, run_vulnerable_code
 from lab.agent.consumption import run_control_consume, run_vulnerable_consume
 from lab.agent.disclosure import run_control_disclosure, run_vulnerable_disclosure
-from lab.agent.goals import DEFAULT_GOAL, HIJACK_GOAL, run_control_goal, run_vulnerable_goal
+from lab.agent.goals import (
+    DEFAULT_GOAL,
+    HIJACK_GOAL,
+    run_control_goal,
+    run_vulnerable_goal,
+)
 from lab.agent.identity import run_control_identity, run_vulnerable_identity
 from lab.agent.memory import run_control_memory, run_vulnerable_memory
 from lab.agent.misinfo import run_control_misinfo, run_vulnerable_misinfo
@@ -53,15 +58,21 @@ _TEMP_CONTAIN_DIRS: list[tempfile.TemporaryDirectory[str]] = []
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="labctl", description="OWASP dual Top-10 lab control")
+    parser = argparse.ArgumentParser(
+        prog="labctl", description="OWASP dual Top-10 lab control"
+    )
     sub = parser.add_subparsers(dest="cmd", required=True)
 
     sub.add_parser("scenario-list", aliases=["list"], help="List scenario ids")
 
-    run_p = sub.add_parser("scenario-run", aliases=["run"], help="Run a scenario oracle path")
+    run_p = sub.add_parser(
+        "scenario-run", aliases=["run"], help="Run a scenario oracle path"
+    )
     run_p.add_argument("scenario_id", help="e.g. LLM01 or ASI07")
 
-    sub.add_parser("contain-check", aliases=["contain"], help="Print contain profile status")
+    sub.add_parser(
+        "contain-check", aliases=["contain"], help="Print contain profile status"
+    )
 
     args = parser.parse_args(argv)
 
@@ -107,7 +118,10 @@ def _oracle_pass(oracle: dict, vuln: str, ctrl: str) -> bool:
     else:
         c_ok = oracle["control_must_not_contain"] not in ctrl
     if "control_must_not_contain" in oracle and "control_must_contain" in oracle:
-        c_ok = oracle["control_must_contain"] in ctrl and oracle["control_must_not_contain"] not in ctrl
+        c_ok = (
+            oracle["control_must_contain"] in ctrl
+            and oracle["control_must_not_contain"] not in ctrl
+        )
     return v_ok and c_ok
 
 
@@ -226,7 +240,12 @@ def cmd_run(scenario_id: str) -> int:
 
 def cmd_contain() -> int:
     result = check_contain()
-    print(json.dumps({"ok": result.ok, "checks": result.checks, "failures": result.failures}, indent=2))
+    print(
+        json.dumps(
+            {"ok": result.ok, "checks": result.checks, "failures": result.failures},
+            indent=2,
+        )
+    )
     return 0 if result.ok else 1
 
 

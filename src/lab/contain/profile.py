@@ -86,7 +86,9 @@ def check_contain(profile: str = "default") -> ContainResult:
     return ContainResult(ok=not failures, checks=checks, failures=failures)
 
 
-def require_contain_for(scenario_requires: bool, profile: str = "default") -> ContainResult:
+def require_contain_for(
+    scenario_requires: bool, profile: str = "default"
+) -> ContainResult:
     use_profile = "tool" if scenario_requires and profile == "default" else profile
     result = check_contain(profile=use_profile)
     if not scenario_requires:

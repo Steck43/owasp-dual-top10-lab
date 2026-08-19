@@ -9,13 +9,14 @@ from __future__ import annotations
 import csv
 import hashlib
 import json
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MATRIX = ROOT / "docs" / "crosswalk_matrix.tsv"
 PROMOTIONS = ROOT / "evidence" / "receipts" / "live_promotions.json"
-HARNESSED = {f"LLM{i:02d}" for i in range(1, 11)} | {f"ASI{i:02d}" for i in range(1, 11)}
+HARNESSED = {f"LLM{i:02d}" for i in range(1, 11)} | {
+    f"ASI{i:02d}" for i in range(1, 11)
+}
 ALLOWED_STATUS = {"Harnessed", "Reproduced-in-lab", "Demonstrated"}
 REQUIRED_COLUMNS = {
     "id",
@@ -55,7 +56,10 @@ def _load_promotions() -> dict:
 
 
 def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Receipts were hashed on mixed line endings. Floor json eol=lf must not
+    # invalidate a Reproduced-in-lab row. Compare newline-normalized bytes.
+    data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(data).hexdigest()
 
 
 def _check_reproduced(row: dict, promotions: dict) -> str | None:
@@ -74,7 +78,10 @@ def _check_reproduced(row: dict, promotions: dict) -> str | None:
             f"evidence/receipts/live_promotions.json (machine-gated)"
         )
     digest = _sha256(path)
-    matched = any(e.get("sha256") == digest and e.get("capture") == cap.replace("\\", "/") for e in entries)
+    matched = any(
+        e.get("sha256") == digest and e.get("capture") == cap.replace("\\", "/")
+        for e in entries
+    )
     # Allow capture path variants if sha matches
     if not matched:
         matched = any(e.get("sha256") == digest for e in entries)

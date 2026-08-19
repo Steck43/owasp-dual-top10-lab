@@ -11,7 +11,7 @@
     {
       "owasp_id": "LLM09",
       "capture": "evidence/receipts/live/LLM09_openai_20260723T204103Z.json",
-      "sha256": "373307985df17adb059ac746610a72ff70959b08c6e2d78722876af419f7b45c",
+      "sha256": "0ce97cb534a4a406da2020e41ed39953ed3f326d4e1077d25b8ca796005ecb16",
       "provider": "openai",
       "model": "gpt-3.5-turbo",
       "scorer": "lab.live.scoring.misinfo_ok_hit",

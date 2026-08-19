@@ -38,7 +38,9 @@ def _http_json(url: str, headers: dict, body: dict, timeout: float = 60.0) -> di
         raise RuntimeError(f"HTTP {e.code} from {safe}: {detail[:500]}") from e
 
 
-def gemini_generate(prompt: str, *, model: str = "gemini-flash-lite-latest", max_tokens: int = 64) -> LiveReply:
+def gemini_generate(
+    prompt: str, *, model: str = "gemini-flash-lite-latest", max_tokens: int = 64
+) -> LiveReply:
     key = os.environ.get("GEMINI_API_KEY", "").strip()
     if not key:
         raise RuntimeError("GEMINI_API_KEY unset")
