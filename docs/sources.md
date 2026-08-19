@@ -33,6 +33,6 @@ Version: 0.3.0
 
 | Path | Use |
 |------|-----|
-| `C:\Users\lande\Engineering_and_Development\aiid-snapshot-20260713` | AIID offline search |
+| local AIID snapshot, offline mirror, not distributed with this repo | AIID offline search |
 | Vault Security teardowns / Standards-Baseline-Map | Incident ↔ framework joins |
 | NewWave `Projects/csen296/docs/owasp_coverage.md` | Prior coverage notes (ideas reference) |
