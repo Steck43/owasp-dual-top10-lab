@@ -56,7 +56,10 @@ def _load_promotions() -> dict:
 
 
 def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Receipts were hashed on mixed line endings. Floor json eol=lf must not
+    # invalidate a Reproduced-in-lab row. Compare newline-normalized bytes.
+    data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(data).hexdigest()
 
 
 def _check_reproduced(row: dict, promotions: dict) -> str | None:
