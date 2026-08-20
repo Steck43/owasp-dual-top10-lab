@@ -13,10 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- 
+- README leads with pin-and-execute rather than edition hygiene, and states Demonstrated as external primary evidence only.
 
 ### Fixed
 
 - Header checker skips `.floor` / `.githooks`; live-capture SHA256 compares newline-normalized bytes so floor `json eol=lf` does not drop LLM09.
 
- 
+
