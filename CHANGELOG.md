@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
+- First push of a new branch resolves craft BASE to the origin default, so required craft jobs do not fail on an all-zero `github.event.before`.
 - Header checker skips `.floor` / `.githooks`; live-capture SHA256 compares newline-normalized bytes so floor `json eol=lf` does not drop LLM09.
 
 
