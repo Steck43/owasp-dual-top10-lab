@@ -38,7 +38,11 @@ def test_yaml_status_equals_matrix() -> None:
     rows = _matrix_rows()
     assert {row["id"] for row in rows} == set(yamls)
     for row in rows:
-        assert yamls[row["id"]] == row["status"], (row["id"], yamls[row["id"]], row["status"])
+        assert yamls[row["id"]] == row["status"], (
+            row["id"],
+            yamls[row["id"]],
+            row["status"],
+        )
 
 
 def test_status_counts_derived() -> None:
