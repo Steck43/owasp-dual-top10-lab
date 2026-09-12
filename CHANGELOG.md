@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Matrix status equals each scenario.yaml. README and REPRODUCE counts are derived from the matrix. Demonstrated stays 0.
 - CITATION.cff and `.zenodo.json` so a later tag can mint. No DOI on this record yet.
 - REPRODUCE.md for the `labctl` fixture-oracle path. Demonstrated stays 0.
 - Crosswalk refuses Demonstrated on a fixture capture. CVE-2025-32711 stays the LLM01 pin; the CNA retrieve is cited, not a promotion.
