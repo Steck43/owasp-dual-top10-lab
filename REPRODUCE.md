@@ -6,8 +6,8 @@ Cold clone. Fixture oracles. No live keys.
 git clone https://github.com/Steck43/owasp-dual-top10-lab.git
 cd owasp-dual-top10-lab
 python -m venv .venv
+. .venv/bin/activate
 # Windows: .venv\Scripts\activate
-# Unix:    source .venv/bin/activate
 pip install -e ".[dev]"
 labctl list
 labctl contain
