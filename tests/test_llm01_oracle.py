@@ -24,7 +24,9 @@ CONTAIN_IDS = {"ASI02", "ASI05"}
 def _labctl(*args: str, env: dict | None = None) -> subprocess.CompletedProcess[str]:
     e = os.environ.copy()
     src = str(ROOT / "src")
-    e["PYTHONPATH"] = src + (os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else "")
+    e["PYTHONPATH"] = src + (
+        os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else ""
+    )
     if env:
         e.update(env)
     return subprocess.run(
@@ -78,7 +80,9 @@ def test_oracle_swap_fails() -> None:
         "control_must_not_contain": "GOAL_HIJACK_OK",
     }
     assert _oracle_pass(oracle, "GOAL_HIJACK_OK", "working_on:summarize_vendor_note")
-    assert not _oracle_pass(oracle, "working_on:summarize_vendor_note", "GOAL_HIJACK_OK")
+    assert not _oracle_pass(
+        oracle, "working_on:summarize_vendor_note", "GOAL_HIJACK_OK"
+    )
 
 
 def test_contain_refuses_egress(tmp_path: Path) -> None:
