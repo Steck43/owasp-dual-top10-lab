@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-07-23
 # Version: 0.3.0
-# Summary: Require 20 rows; capture paths exist; Reproduced needs promotion receipt.
+# Summary: Require 20 rows; Reproduced needs a promotion receipt; Demonstrated cannot use a fixture.
 
 from __future__ import annotations
 
@@ -99,6 +99,20 @@ def _check_reproduced(row: dict, promotions: dict) -> str | None:
     return None
 
 
+def _check_demonstrated(row: dict) -> str | None:
+    oid = row["id"]
+    cap = (row.get("capture") or "").replace("\\", "/").strip()
+    if cap.startswith("evidence/fixtures/"):
+        return f"{oid}: Demonstrated cannot use a fixture capture"
+    note = row.get("searched_note") or ""
+    if "https://" not in note and "http://" not in note:
+        return f"{oid}: Demonstrated requires a URL in searched_note"
+    cves = (row.get("cves") or "").strip().lower()
+    if cves in {"", "none"}:
+        return f"{oid}: Demonstrated requires a CVE or named external id"
+    return None
+
+
 def main() -> int:
     rows = list(csv.DictReader(MATRIX.open(encoding="utf-8"), delimiter="\t"))
     if not rows:
@@ -156,6 +170,11 @@ def main() -> int:
 
         if status == "Reproduced-in-lab":
             err = _check_reproduced(r, promotions)
+            if err:
+                print(err)
+                return 1
+        if status == "Demonstrated":
+            err = _check_demonstrated(r)
             if err:
                 print(err)
                 return 1
