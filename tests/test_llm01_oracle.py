@@ -38,8 +38,6 @@ def _labctl(*args: str, env: dict | None = None) -> subprocess.CompletedProcess[
 
 
 def _scenario_oracle(sid: str) -> dict:
-    import yaml
-
     from labctl.cli import _load_scenario
 
     _path, data = _load_scenario(sid)
