@@ -1,0 +1,17 @@
+{
+  "title": "owasp-dual-top10-lab",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Stecker, Landen"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "OWASP",
+    "pin-and-execute",
+    "agent security",
+    "claim tense"
+  ],
+  "description": "Pin-and-execute lab for OWASP LLM 2025 and Agentic 2026 rows. Classification matrices are prior art. Demonstrated stays zero until external primary evidence earns that word."
+}

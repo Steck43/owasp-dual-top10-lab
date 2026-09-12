@@ -1,6 +1,6 @@
 # Author: Landen Stecker
 # Created: 2026-07-23
-# Updated: 2026-07-23
+# Updated: 2026-09-12
 # Version: 0.3.0
 # Summary: Oracle tests for all twenty Harnessed scenarios.
 
@@ -23,6 +23,10 @@ CONTAIN_IDS = {"ASI02", "ASI05"}
 
 def _labctl(*args: str, env: dict | None = None) -> subprocess.CompletedProcess[str]:
     e = os.environ.copy()
+    src = str(ROOT / "src")
+    e["PYTHONPATH"] = src + (
+        os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else ""
+    )
     if env:
         e.update(env)
     return subprocess.run(
@@ -35,6 +39,15 @@ def _labctl(*args: str, env: dict | None = None) -> subprocess.CompletedProcess[
     )
 
 
+def _scenario_oracle(sid: str) -> dict:
+    from labctl.cli import _load_scenario
+
+    _path, data = _load_scenario(sid)
+    oracle = data.get("oracle") or {}
+    assert oracle.get("vuln_must_contain"), sid
+    return oracle
+
+
 @pytest.mark.parametrize("sid", HARNESSED)
 def test_harnessed_oracle(sid: str, tmp_path: Path) -> None:
     env = {}
@@ -44,8 +57,32 @@ def test_harnessed_oracle(sid: str, tmp_path: Path) -> None:
     r = _labctl("run", sid, env=env)
     assert r.returncode == 0, r.stderr + r.stdout
     data = json.loads(r.stdout)
-    assert data["oracle_pass"] is True
     assert data["owasp_id"] == sid
+    oracle = _scenario_oracle(sid)
+    vuln = data["vulnerable_output"]
+    ctrl = data["control_output"]
+    assert oracle["vuln_must_contain"] in vuln
+    if "control_must_contain" in oracle:
+        assert oracle["control_must_contain"] in ctrl
+    if "control_must_not_contain" in oracle:
+        assert oracle["control_must_not_contain"] not in ctrl
+    assert vuln != ctrl
+    assert data["oracle_pass"] is True
+
+
+def test_oracle_swap_fails() -> None:
+    """A swapped pair must fail. oracle_pass-alone cannot hide this."""
+    from labctl.cli import _oracle_pass
+
+    oracle = {
+        "vuln_must_contain": "GOAL_HIJACK_OK",
+        "control_must_contain": "working_on:summarize_vendor_note",
+        "control_must_not_contain": "GOAL_HIJACK_OK",
+    }
+    assert _oracle_pass(oracle, "GOAL_HIJACK_OK", "working_on:summarize_vendor_note")
+    assert not _oracle_pass(
+        oracle, "working_on:summarize_vendor_note", "GOAL_HIJACK_OK"
+    )
 
 
 def test_contain_refuses_egress(tmp_path: Path) -> None:
