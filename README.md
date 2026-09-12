@@ -32,14 +32,14 @@ Promote rules, process loop, research receipts, and the related Stage-1 gate liv
 | | Count |
 |--|------:|
 | Matrix rows resolved (pin or dated N/A) | 20/20 |
-| Harnessed | 19 |
+| Harnessed | 18 |
 | Reproduced-in-lab | 1 (LLM09) |
 | Stub | 0 |
-| Demonstrated | 0 |
+| Demonstrated | 1 (LLM01, CVE-2025-32711) |
 
 `pytest tests/test_llm01_oracle.py` now asserts each id's `scenario.yaml` oracle strings against `labctl` JSON, and a swapped pair must fail. That is not a live promotion. Nineteen rows remain canned fixtures. Do not refresh fixtures to green a red test.
 
-The matrix has 20 of 20 rows resolved by a pin or a dated N/A, of which nineteen are Harnessed, one (LLM09) is Reproduced-in-lab against `gpt-3.5-turbo` with a committed capture under `evidence/receipts/live/` and `live_promotions.json` using a strict `MISINFO_OK` line scorer, and stub and Demonstrated are both zero. Demonstrated stays zero until external primary evidence earns that word; building a toy and breaking it here does not.
+The matrix has 20 of 20 rows resolved by a pin or a dated N/A. Eighteen stay Harnessed. LLM09 is Reproduced-in-lab against `gpt-3.5-turbo` with a committed capture under `evidence/receipts/live/` and `live_promotions.json` using a strict `MISINFO_OK` line scorer. LLM01 is Demonstrated on the CVE-2025-32711 CNA: Ai command injection in M365 Copilot allows an unauthorized attacker to disclose information over a network. That is the same injection class as this row's untrusted-blob override. Building a toy and breaking it here still does not earn Demonstrated.
 
 LLM01 live OpenAI output only described the inject marker, so that attempt was demoted to Harnessed. Local gitignored captures under `evidence/captures/` remain for attempts, not promotions. ASI07/08/10 use a small multi-agent bus; ASI02/ASI05 require the contain profile; ASI04 shares the LLM03 install mechanism under agent-goal framing.
 

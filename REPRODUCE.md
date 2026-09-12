@@ -18,10 +18,10 @@ labctl run LLM01
 Expected on this HEAD, named harness `pytest -q` plus `labctl run LLM01`:
 
 - Matrix rows resolved (pin or dated N/A): 20/20
-- Harnessed: 19
+- Harnessed: 18
 - Reproduced-in-lab: 1 (LLM09)
-- Demonstrated: 0
+- Demonstrated: 1 (LLM01, CVE-2025-32711)
 
-`labctl run LLM01` executes the fixture oracle for that row. It is not Demonstrated. Demonstrated stays zero until external primary evidence earns that word.
+`labctl run LLM01` executes the fixture oracle for that row. Demonstrated on LLM01 is the CVE-2025-32711 CNA, not that fixture run.
 
 Live captures need keys and write gitignored `evidence/captures/`. They are not this file.
