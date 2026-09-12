@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: owasp-dual-top10-lab
+message: If you use this software, please cite it as below.
+type: software
+authors:
+  - family-names: Stecker
+    given-names: Landen
+license: MIT
+repository-code: https://github.com/Steck43/owasp-dual-top10-lab
+abstract: >
+  Pin-and-execute lab for OWASP LLM 2025 and Agentic 2026 rows. Each row
+  pins a CVE, an AIID, or a dated N/A, then runs a fixture oracle.
+  Classification matrices are prior art. Demonstrated stays zero until
+  external primary evidence earns that word.
+keywords:
+  - OWASP
+  - pin-and-execute
+  - agent security
+  - claim tense
