@@ -21,7 +21,7 @@ Version: 0.3.0
 
 | ID | ATLAS | CVE | AIID |
 |----|-------|-----|------|
-| LLM01 | AML.T0051; AML.T0051.001 | CVE-2025-32711 (Demonstrated 2026-09-12; CNA Ai command injection) | AIID-5307; 5329; 352 |
+| LLM01 | AML.T0051; AML.T0051.001 | CVE-2025-32711 (cited 2026-09-12; CNA Ai command injection; not Demonstrated) | AIID-5307; 5329; 352 |
 | LLM02 | AML.T0057 | none; searched 2026-07-23 | AIID-657 |
 | ASI01 | AML.T0053 | CVE-2025-32711 (adjacent) | AIID-5307; 352 |
 | ASI02 | AML.T0098 | none; searched 2026-07-23 | AIID-1152; 1210 |

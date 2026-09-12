@@ -2,7 +2,7 @@
 # Created: 2026-07-23
 # Updated: 2026-09-12
 # Version: 0.3.0
-# Summary: Oracle tests for all twenty Harnessed scenarios.
+# Summary: Oracle tests for all twenty fixture scenarios.
 
 from __future__ import annotations
 
