@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CITATION.cff and `.zenodo.json` so a later tag can mint. No DOI on this record yet.
 - REPRODUCE.md for the `labctl` fixture-oracle path. Demonstrated stays 0.
+- Oracle tests assert `scenario.yaml` `vuln_must_contain` / control fields against `labctl` JSON, and a swapped pair must fail.
+- Crosswalk columns `eu_risk_tier`, `eu_article`, `eu_claim_tense` on the existing twenty rows. Filled only on LLM06 / ASI02 / ASI05 / ASI09. Empty stays empty.
 - Repo floor: GitHub Actions (secrets, authorship, tests 3.11/3.12, ruff, craft, zizmor/actionlint), Dependabot 7-day cooldown, SECURITY.md.
 
 ### Changed

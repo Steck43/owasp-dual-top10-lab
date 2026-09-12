@@ -27,7 +27,7 @@ Containment is a declared policy profile before tool or filesystem scenarios run
 
 Promote rules, process loop, research receipts, and the related Stage-1 gate live in [docs/claim_tense.md](docs/claim_tense.md), [docs/PROCESS.md](docs/PROCESS.md), [docs/RESULTS-2026-07-23.md](docs/RESULTS-2026-07-23.md), and [docs/related_capability_gate.md](docs/related_capability_gate.md).
 
-## Status (2026-07-23)
+## Status (derived from `docs/crosswalk_matrix.tsv`, 2026-09-12)
 
 | | Count |
 |--|------:|
@@ -36,6 +36,8 @@ Promote rules, process loop, research receipts, and the related Stage-1 gate liv
 | Reproduced-in-lab | 1 (LLM09) |
 | Stub | 0 |
 | Demonstrated | 0 |
+
+`pytest tests/test_llm01_oracle.py` now asserts each id's `scenario.yaml` oracle strings against `labctl` JSON, and a swapped pair must fail. That is not a live promotion. Nineteen rows remain canned fixtures. Do not refresh fixtures to green a red test.
 
 The matrix has 20 of 20 rows resolved by a pin or a dated N/A, of which nineteen are Harnessed, one (LLM09) is Reproduced-in-lab against `gpt-3.5-turbo` with a committed capture under `evidence/receipts/live/` and `live_promotions.json` using a strict `MISINFO_OK` line scorer, and stub and Demonstrated are both zero. Demonstrated stays zero until external primary evidence earns that word; building a toy and breaking it here does not.
 
