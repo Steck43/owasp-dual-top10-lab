@@ -1,7 +1,7 @@
 # Author: Landen Stecker
 # Created: 2026-07-23
-# Updated: 2026-09-12
-# Version: 0.3.0
+# Updated: 2026-10-04
+# Version: 0.3.1
 # Summary: Oracle tests for all twenty fixture scenarios.
 
 from __future__ import annotations
@@ -89,6 +89,16 @@ def test_contain_refuses_egress(tmp_path: Path) -> None:
     env = {
         "LAB_CONTAIN_ROOT": str(tmp_path),
         "LAB_ALLOW_EGRESS": "1",
+    }
+    r = _labctl("contain", env=env)
+    assert r.returncode == 1
+
+
+def test_contain_refuses_host_creds(tmp_path: Path) -> None:
+    """Egress-only refuse does not cover LAB_ALLOW_HOST_CREDS."""
+    env = {
+        "LAB_CONTAIN_ROOT": str(tmp_path),
+        "LAB_ALLOW_HOST_CREDS": "1",
     }
     r = _labctl("contain", env=env)
     assert r.returncode == 1
