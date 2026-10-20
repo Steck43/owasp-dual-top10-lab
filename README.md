@@ -22,7 +22,7 @@ Containment is a declared policy profile before tool or filesystem scenarios run
 
 ## Claim status
 
-| Status | Meaning |
+| Rung | Meaning |
 |--------|---------|
 | Stub | Matrix row and scenario path only |
 | Harnessed | Deterministic fixture: vulnerable path fails open, control closes it |
