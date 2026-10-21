@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- README states the 2026-10-20 matrix counts and drops the dead Agent State Attack link. The path figure is `docs/diagrams/crosswalk-flow.svg`.
 - Matrix status equals each scenario.yaml. README and REPRODUCE counts are derived from the matrix. Demonstrated stays 0.
 - CITATION.cff and `.zenodo.json` so a later tag can mint. No DOI on this record yet.
 - REPRODUCE.md for the `labctl` fixture-oracle path. Demonstrated stays 0.
